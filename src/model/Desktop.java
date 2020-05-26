@@ -9,6 +9,8 @@ public class Desktop
 	private int SelectedRank;
 	private List<Folder> repositories;
 	
+	public static final String TERMINAL_NAME = "ROBCO INDUSTRIES UNIFIED OPERATING SYSTEM \n COPYRIGHT 2075-2077 ROBCO INDUSTRIES";
+	
 	private static final String ROOT_NAME = "ROOT/";
 	
 	
