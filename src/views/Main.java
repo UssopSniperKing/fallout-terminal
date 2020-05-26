@@ -1,17 +1,22 @@
 package views;
 
-import java.io.IOException;
+import controller.Controller;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import model.Desktop;
 
 public class Main extends Application 
 {
 	
-	private Stage primaryStage;
-	private AnchorPane window;
+	public static final double CANVAS_HEIGHT = 800;
+	public static final double CANVAS_WIDTH = 800;
+	
+	private Stage stage;
+	private View view;
 	
 	
     public static void main(String[] args) 
@@ -21,36 +26,24 @@ public class Main extends Application
  
     
     @Override
-    public void start(Stage primaryStage) 
+    public void start(Stage stage) 
     {
-    	this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Fallout Terminal");
-        this.initWindow();
-    }
-
-    
-    public void initWindow()
-    {
-    	try {
-    		
-    		//Load the window from FXML file
-    		FXMLLoader loader = new FXMLLoader();
-    		loader.setLocation(Main.class.getResource("/views/window.fxml"));
-    		this.window = (AnchorPane) loader.load();
-    		
-    		//Show the scene containing the window
-    		Scene scene = new Scene(this.window);
-    		this.primaryStage.setScene(scene);
-    		this.primaryStage.show();
-    		
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}
+        stage.setTitle( "Fallout Terminal" );
+        this.view = new View();
+        Controller controller = new Controller(new Desktop(), this.view);
+        Group root = new Group();
+        Scene scene = new Scene(root, CANVAS_WIDTH, CANVAS_HEIGHT, Color.BLACK);
+        Canvas canvas = new Canvas();
+        root.getChildren().add(canvas);
+        stage.setScene(scene);
+        this.view.initialize(canvas, controller);
+        this.view.setEventHandler(scene);
+        stage.show();
     }
     
     
-    public Stage getPrimaryStage()
+    public Stage getStage()
     {
-    	return this.primaryStage;
+    	return this.stage;
     }
 }

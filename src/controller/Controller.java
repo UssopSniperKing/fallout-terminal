@@ -15,4 +15,28 @@ public class Controller
 		this.view = view;
 	}
 	
+	
+	public void selectForward()
+	{
+		this.desktop.selectForward();
+	}
+	
+	
+	public void selectBackward()
+	{
+		this.desktop.selectBackward();
+	}
+	
+	
+	public void goInside()
+	{
+		this.desktop.goInside();
+	}
+	
+	
+	public void goOutside()
+	{
+		this.desktop.goOutside();
+	}
+	
 }

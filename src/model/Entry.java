@@ -1,5 +1,8 @@
 package model;
 
+/*
+ * The class Entry is just a sort of text file.
+ */
 public class Entry extends Element
 {
 	private String content;
@@ -11,7 +14,9 @@ public class Entry extends Element
 		this.content = content;
 	}
 	
-	
+	/*
+	 * @return The text of the entry.
+	 */
 	public String getContent()
 	{
 		return this.content;
