@@ -1,22 +1,14 @@
 package model;
 
-public class Entry 
+public class Entry extends Element
 {
-	
-	private String title;
 	private String content;
 	
 	
-	public Entry(String title, String content)
+	public Entry(String name, String content)
 	{
-		this.title = title;
+		this.name = name;
 		this.content = content;
-	}
-	
-	
-	public String getTitle()
-	{
-		return this.title;
 	}
 	
 	

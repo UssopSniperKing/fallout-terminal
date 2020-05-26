@@ -3,49 +3,34 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Folder 
+public class Folder extends Element
 {
 	
-	private List<Entry> entries;
-	private List<Folder> folders;
-	private String name;
+	private List<Element> content;
 	
 	
 	public Folder(String name)
 	{
 		this.name = name;
-		this.entries = new ArrayList<>();
-		this.folders = new ArrayList<>();
+		this.content = new ArrayList<>();
 	}
 	
 	
-	public List<Entry> getEntries() 
+	public List<Element> getContent() 
 	{
-		return this.entries;
+		return this.content;
 	}
 	
 	
-	public List<Folder> getFolders()
+	public void add(Entry entry)
 	{
-		return this.folders;
+		this.content.add(entry);
 	}
 	
 	
-	public String getName()
+	public void add(Folder folder)
 	{
-		return this.name;
-	}
-	
-	
-	public void addEntry(Entry entry)
-	{
-		this.entries.add(entry);
-	}
-	
-	
-	public void addFolder(Folder folder)
-	{
-		this.folders.add(folder);
+		this.content.add(folder);
 	}
 	
 }

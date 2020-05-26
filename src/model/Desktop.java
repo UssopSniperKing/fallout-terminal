@@ -10,11 +10,12 @@ public class Desktop
 	public Desktop()
 	{
 		this.rootFolder = new Folder(ROOT_NAME);
+		this.rootFolder.select();
 	}
 	
-	public String getRootfolderName()
+	public Folder getRootFolder()
 	{
-		return this.ROOT_NAME;
+		return this.rootFolder;
 	}
 	
 }
