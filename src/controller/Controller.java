@@ -1,6 +1,10 @@
 package controller;
 
+import java.util.List;
+
 import model.Desktop;
+import model.Element;
+import model.Folder;
 import views.View;
 
 public class Controller 
@@ -37,6 +41,18 @@ public class Controller
 	public void goOutside()
 	{
 		this.desktop.goOutside();
+	}
+	
+	
+	public Element getViewedElement()
+	{
+		return this.desktop.getViewedElement();
+	}
+	
+	
+	public List<Folder> getRepositories()
+	{
+		return this.desktop.getRepositories();
 	}
 	
 }

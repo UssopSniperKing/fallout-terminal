@@ -6,6 +6,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import model.Desktop;
+import model.Element;
+import model.Entry;
+import model.Folder;
 
 public class CanvasView 
 {
@@ -31,6 +34,11 @@ public class CanvasView
 		this.clear();
 		this.renderBackground();
 		this.renderDesktopText();
+		
+		for (Folder f : this.controller.getRepositories()) {
+				this.render(f);
+			}
+
 	}
 	
 	
@@ -53,4 +61,37 @@ public class CanvasView
 		this.context.setFont(FONT);
 		this.context.fillText(Desktop.TERMINAL_NAME, 100, 100);
 	}
+	
+	
+	private void render(Folder f)
+	{		
+		if (f.isSelected()) {
+			this.context.setFill(TEXT_COLOR);
+			this.context.fillRect(f.getPosX(), f.getPosY(), 50, 50);
+			this.context.setFill(BACKGROUND_COLOR);
+			this.context.setFont(FONT);
+			this.context.fillText(f.getName(), f.getPosX(), f.getPosY());
+		} else {
+			this.context.setFill(TEXT_COLOR);
+			this.context.setFont(FONT);
+			this.context.fillText(f.getName(), f.getPosX(), f.getPosY());
+		}
+	}
+	
+	
+	private void render(Entry e)
+	{
+		if (e.isSelected()) {
+			this.context.setFill(TEXT_COLOR);
+			this.context.fillRect(e.getPosX(), e.getPosY(), 50, 50);
+			this.context.setFill(BACKGROUND_COLOR);
+			this.context.setFont(FONT);
+			this.context.fillText(e.getName(), e.getPosX(), e.getPosY());
+		} else {
+			this.context.setFill(TEXT_COLOR);
+			this.context.setFont(FONT);
+			this.context.fillText(e.getName(), e.getPosX(), e.getPosY());
+		}
+	}
+	
 }

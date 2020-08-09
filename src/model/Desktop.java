@@ -8,6 +8,7 @@ public class Desktop
 	private Folder rootFolder;
 	private int SelectedRank;
 	private List<Folder> repositories;
+	private Element viewedElement;
 	
 	public static final String TERMINAL_NAME = "ROBCO INDUSTRIES UNIFIED OPERATING SYSTEM \n COPYRIGHT 2075-2077 ROBCO INDUSTRIES";
 	
@@ -18,6 +19,8 @@ public class Desktop
 	{
 		this.SelectedRank = 0;
 		this.rootFolder = new Folder(ROOT_NAME);
+		this.rootFolder.setPosX(200);
+		this.rootFolder.setPosY(200);
 		this.repositories = new ArrayList<>();
 		this.repositories.add(this.rootFolder);
 		this.repositories.get(this.SelectedRank).select();
@@ -27,6 +30,12 @@ public class Desktop
 	public List<Folder> getRepositories()
 	{
 		return this.repositories;
+	}
+	
+	
+	public Element getViewedElement()
+	{
+		return this.viewedElement;
 	}
 	
 	
@@ -42,13 +51,19 @@ public class Desktop
 	}
 	
 	
+	public Element getSelectedElement()
+	{
+		return this.getRepositories().get(this.getSelectedRank());
+	}
+	
+	
 	public void selectForward()
 	{
 		if (this.getSelectedRank() + 1 <= this.getRepositories().size()) {
 			
-			this.getRepositories().get(this.getSelectedRank()).unselect();
+			this.getSelectedElement().unselect();
 			this.setSelectedRank(this.getSelectedRank() + 1);
-			this.getRepositories().get(this.getSelectedRank()).select();
+			this.getSelectedElement().select();
 		}
 	}
 	
@@ -57,16 +72,17 @@ public class Desktop
 	{
 		if (this.getSelectedRank() - 1 >= 0) {
 			
-			this.getRepositories().get(this.getSelectedRank()).unselect();
+			this.getSelectedElement().unselect();
 			this.setSelectedRank(this.getSelectedRank() - 1);
-			this.getRepositories().get(this.getSelectedRank()).select();
+			this.getSelectedElement().select();
 		}
 	}
 	
 	
 	public void goInside()
 	{
-		//TODO
+		this.viewedElement = this.getSelectedElement();
+		this.getSelectedElement().goInside();
 	}
 	
 	

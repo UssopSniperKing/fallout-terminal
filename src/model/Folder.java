@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * The class Folder can contains both Entries and Folders (= sub-folders).
+ * The class Folder can contains Entries.
  */
 public class Folder extends Element
 {
 	
-	private List<Element> content;
+	private List<Entry> content;
 	
 	
 	public Folder(String name)
@@ -22,16 +22,16 @@ public class Folder extends Element
 	/*
 	 * @return The content of the folder.
 	 */
-	public List<Element> getContent() 
+	public List<Entry> getContent() 
 	{
 		return this.content;
 	}
 	
 	
 	/*
-	 * Add an Element in the folder.
+	 * Add an entry in the folder.
 	 */
-	public void add(Element element)
+	public void add(Entry element)
 	{
 		this.content.add(element);
 	}
